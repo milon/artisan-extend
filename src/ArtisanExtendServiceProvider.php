@@ -2,9 +2,10 @@
 
 namespace Milon\Artisan;
 
+use Milon\Artisan\Console\MakeClass;
 use Illuminate\Support\ServiceProvider;
 
-class ServiceProvider extends ServiceProvider
+class ArtisanExtendServiceProvider extends ServiceProvider
 {
     protected $defer = true;
 
@@ -16,14 +17,14 @@ class ServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->runningInConsole()) {
-            // $this->commands([
-            //     TailCommand::class,
-            // ]);
+            $this->commands([
+                MakeClass::class,
+            ]);
         }
     }
 
     public function provides()
     {
-        //return ['command.tail'];
+        return [];
     }
 }
